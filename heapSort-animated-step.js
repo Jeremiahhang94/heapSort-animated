@@ -49,7 +49,7 @@ Animator.prototype.calculateArrowTop = function(index)
 
 Animator.prototype.buildBars = function(array)
 {
-	var STAGE_WIDTH = 500;
+	var STAGE_WIDTH = 400;
 	var CLASSNAME = 'bar';
 	var MARGIN = 2;
 	
