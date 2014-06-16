@@ -42,23 +42,27 @@ Animator.prototype.setCompareArrow = function(index)
 Animator.prototype.calculateArrowTop = function(index)
 {
 	var bar_height = this.getBarHeight(this.length);
-	return (index + 0.5) * (bar_height + 2);
+	return 15 + (index * bar_height);
+	
+	//20+i*(height + margin)+"px";
 }
 
 Animator.prototype.buildBars = function(array)
 {
 	var STAGE_WIDTH = 500;
 	var CLASSNAME = 'bar';
+	var MARGIN = 2;
+	
 	var length = this.length;
 	var max_value = array[array.length - 1];
 	
-	var bar_height = this.getBarHeight(length);
+	var bar_height = this.getBarHeight(length) - MARGIN;
 	
 	for(var i =0; i<length; i++)
 	{
 		var bar_value = array[i];
 		var bar_width = bar_value/max_value*STAGE_WIDTH;
-		var bar = Bar(i, bar_width, bar_height, CLASSNAME);
+		var bar = Bar(i, bar_width, bar_height, MARGIN, CLASSNAME);
 		bar.innerHTML = "<p>"+bar_value+"<p>";
 		
 		this.bars.push(bar);
@@ -75,14 +79,14 @@ Animator.prototype.getBarHeight = function(length)
 }
 
 
-function Bar(i, width, height, className)
+function Bar(i, width, height, margin, className)
 {
-	var margin = 2;
 	var div = document.createElement("div");
 	div.className = className;
+	
 	div.style.width = width+"px";
 	div.style.height = height+"px";
-	div.style.top = 5+i*(height+margin)+"px";
+	div.style.top = 20+i*(height + margin)+"px";
 	return div;	
 }
 

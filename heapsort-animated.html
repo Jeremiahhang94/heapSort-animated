@@ -11,12 +11,42 @@ body
 	margin: 0 0 0 0;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+#main
+{
+	width: 1100px;
+	height: 500px;
+	margin: 0 auto 0 auto;	
+}
+
+	#description
+	{
+		width: 500px;
+		height: 500px;
+		float: left;
+
+	}
+	
+		#description h1
+		{
+			font-size: 34pt;
+			margin-top: 50px;
+		}
+		
+		#description p i
+		{
+			font-size: 10pt;
+			line-height: 17px;
+		}
+	
+	
 	#stage
 	{
-		width: 100%;
+		width: 600px;
 		height: 500px;
 		background-color: white;	
 		padding-top: 10px;
+		float: left;
 	}
 	
 		#stage-bars
@@ -45,7 +75,8 @@ body
 		{
 			width: 10px;
 			height: 500px;	
-			margin: 0 0 0 350px;
+			position: absolute;
+			margin: 0 0 0 20px;
 		}
 			
 			.arrow
@@ -74,6 +105,27 @@ body
 </head>
 
 <body>
+<div id = 'main'>
+	<div id = 'description'>
+    
+        	<h1> - Heap Sort -</h1>
+            
+            <p>
+            	A comparision-based sorting algorithm.<br />
+                The first step is to build a heap out of the data like a binary tree.<br />
+                In an typical array, the root note would be stored at index 0, with the child at 2*i+1 and 2*1+2<br />
+            </p>
+            <p>  
+                Afterwhich the tree have been constructed, the second step would commence such that the largest element would be swaped with the smallest element and there after removed from the heap into the array, everytime a swap occurs, the heap would be updated again to maintain the heap. Once all the object have been removed from the heap, the sorted array is thus formed. 
+            </p>
+            
+            <p style='padding-top: 50px'>
+            	<i>
+                	This was a project done during my holiday where I wanted to expand my skills and learn something new, upon learning sorting techniques, I thought it would be more fun and interesting to create an 'animatable' version while creating a deeper understanding of the sorting technique. Hope this would help you in some way or another. 
+                </i>
+            </p>
+    
+    </div>
 
 	<div id ='stage'>
     
@@ -87,10 +139,9 @@ body
         
     	<div id='stage-bars'>
         
-        
         </div>
     
     </div>
-
+</div>
 </body>
 </html>
