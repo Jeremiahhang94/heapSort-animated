@@ -6,111 +6,10 @@ window.onload = function()
 	h.start(function(){console.log(this.array)});
 }
 
-function Animator(length)
-{
-	var STAGE_BAR_ID = "stage-bars";
-	var MAIN_ARROW_ID = "main-arrow";
-	var COMPARE_ARROW_ID = "compare-arrow";
-	
-	this.length = length;
-	
-	this.stageBars = document.getElementById(STAGE_BAR_ID);
-	this.bars = new Array();
-	
-	var mainArrow = document.getElementById(MAIN_ARROW_ID);
-	var compareArrow = document.getElementById(COMPARE_ARROW_ID);
-	this.arrows = {
-			mainArrow : mainArrow,
-			compareArrow : compareArrow
-		};
-}
-
-Animator.prototype.setMainArrow = function(index)
-{
-	var arrow = this.arrows.mainArrow;
-	var top = this.calculateArrowTop(index);
-	arrow.style.top = top + "px";
-}
-
-Animator.prototype.setCompareArrow = function(index)
-{
-	var arrow = this.arrows.compareArrow;
-	var top = this.calculateArrowTop(index);
-	arrow.style.top = top + "px";
-}
-
-Animator.prototype.calculateArrowTop = function(index)
-{
-	var bar_height = this.getBarHeight(this.length);
-	return 15 + (index * bar_height);
-	
-	//20+i*(height + margin)+"px";
-}
-
-Animator.prototype.buildBars = function(array)
-{
-	var STAGE_WIDTH = 400;
-	var CLASSNAME = 'bar';
-	var MARGIN = 2;
-	
-	var length = this.length;
-	var max_value = array[array.length - 1];
-	
-	var bar_height = this.getBarHeight(length) - MARGIN;
-	
-	for(var i =0; i<length; i++)
-	{
-		var bar_value = array[i];
-		var bar_width = bar_value/max_value*STAGE_WIDTH;
-		var bar = Bar(i, bar_width, bar_height, MARGIN, CLASSNAME);
-		bar.innerHTML = "<p>"+bar_value+"<p>";
-		
-		this.bars.push(bar);
-		this.stageBars.appendChild(bar);
-	}
-}
-
-Animator.prototype.getBarHeight = function(length)
-{
-	var STAGE_HEIGHT = 480;
-	var bar_height = STAGE_HEIGHT/length;
-	
-	return bar_height;
-}
-
-
-function Bar(i, width, height, margin, className)
-{
-	var div = document.createElement("div");
-	div.className = className;
-	
-	div.style.width = width+"px";
-	div.style.height = height+"px";
-	div.style.top = 20+i*(height + margin)+"px";
-	return div;	
-}
-
-function RandomGenerator()
-{
-	
-}
-
-RandomGenerator.generate = function(maxNumber, minNumber, quantity)
-{
-	var numbers = new Array();
-	for( var i = 0; i<quantity; i++)
-	{
-		var number = Math.floor(Math.random()*(maxNumber - minNumber) + minNumber);
-		numbers.push(number);
-	}
-	
-	numbers.push(maxNumber);
-	return numbers;
-	
-}
-
 function Heapifier(delay)
 {	
+	SortAnimatable.call(this);
+
 	var biggestNumber = 100;
 	var quantity = 20;
 	
@@ -127,6 +26,9 @@ function Heapifier(delay)
 	this.toCall;
 	this.heapifyComplete;
 }
+
+Heapifier.prototype = new SortAnimatable();
+Heapifier.prototype.constructor = Heapifier;
 
 Heapifier.prototype.start = function(complete)
 {
@@ -246,33 +148,6 @@ Heapifier.prototype.swap = function(args)
 	};
 	
 	this.startTimeout(this.startHeaping, args);
-}
-
-
-
-Heapifier.prototype.setToCall = function(toCall)
-{
-	this.toCall = toCall;
-}
-
-Heapifier.prototype.startTimeout = function()
-{
-	_this = this;
-	setTimeout(function(){ _this.toCall() }, this.delay);	
-}
-
-Heapifier.prototype.startTimeout = function(toCall)
-{
-	this.setToCall(toCall);
-	var _this = this;
-	setTimeout(function(){ _this.toCall() }, this.delay);	
-}
-
-Heapifier.prototype.startTimeout = function(toCall, args)
-{
-	this.setToCall(toCall);
-	var _this = this;
-	setTimeout(function(){ _this.toCall(args) }, this.delay);	
 }
 
 Heapifier.prototype.leftOf = function(index)

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+body
+{
+	margin: 0 0 0 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#main
+{
+	width: 900px;
+	height: 500px;
+	margin: 0 auto 0 auto;	
+}
+
+	#description
+	{
+		width: 400px;
+		height: 500px;
+		float: left;
+
+	}
+	
+		#description h1
+		{
+			font-size: 34pt;
+			margin-top: 50px;
+		}
+		
+		#description p i
+		{
+			font-size: 10pt;
+			line-height: 17px;
+		}
+	
+	
+	#stage
+	{
+		width: 500px;
+		height: 500px;
+		background-color: white;	
+		padding-top: 10px;
+		float: left;
+	}
+	
+		#stage-bars
+		{
+			width: 400px;
+			height: 500px;
+			margin: 0 auto 0 auto;
+		}
+		
+			.bar
+			{
+				background-color: #333;
+				margin-bottom: 1px;
+				position: absolute;
+			}
+			
+				.bar p
+				{
+					color: #333;
+					margin: 5px -15px 0 0;
+					font-size: 12px;	
+					float: right;
+				}
+			
+		#stage-arrows
+		{
+			width: 50px;
+			height: 500px;	
+			position: absolute;
+			margin: 0 0 0 20px;
+			overflow: hidden;
+		}
+			
+			.arrow
+			{
+				width: 0; 
+				height: 0; 
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				-webkit-transform: rotate(-90deg);
+				
+				position: absolute;
+			}
+			
+			#main-arrow
+			{
+				border-top: 10px solid rgba(255,0,102,1);
+				top: 300px;
+			}	
+			
+			#compare-arrow
+			{
+				border-top: 10px solid #AAA;	
+			}
